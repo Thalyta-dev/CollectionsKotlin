@@ -1,6 +1,5 @@
 package curso2Collections
-
-fun main() {
+fun testaCopia() {
     val banco = BancoDeNomes()
     val nomesSalvos: Collection<String> = banco.nomes
 //    banco.nomes.add("Alex")
@@ -9,6 +8,18 @@ fun main() {
     println(BancoDeNomes().nomes)
 }
 
+class BancoDeNomes {
+
+    val nomes: Collection<String> get() = dados.toList()
+
+    fun salva(nome: String){
+        dados.add(nome)
+    }
+
+    companion object {
+        private val dados = mutableListOf<String>()
+    }
+}
 
 fun testaColecao() {
     val nomes: Collection<String> = mutableListOf(
@@ -24,17 +35,4 @@ fun testaColecao() {
     println(nomes)
     println("Tem o nome Alex? ${nomes.contains("Alex")}")
     println("Tamanho da coleção ${nomes.size}")
-}
-
-class BancoDeNomes {
-
-    val nomes: Collection<String> get() = dados.toList()
-
-    fun salva(nome: String){
-        dados.add(nome)
-    }
-
-    companion object {
-        private val dados = mutableListOf<String>()
-    }
 }
